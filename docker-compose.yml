@@ -2,7 +2,7 @@ version: '3'
 
 services:
   allure:
-    image: "frankescobar/allure-docker-service"
+    image: "frankescobar/allure-docker-service:latest"
     environment:
       CHECK_RESULTS_EVERY_SECONDS: 1
       KEEP_HISTORY: 1
