@@ -1,20 +1,18 @@
 pipeline {
     agent any
+    
+    environment {
+        TELEGRAM_BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
+    }
 
     stages {
-        stage('Сборка') {
+        stage('Build') {
             steps {
-                echo 'Выполняем команды для сборки'
-            }
-        }
-        stage('Тестирование') {
-            steps {
-                echo 'Тестируем нашу сборку'
-            }
-        }
-        stage('Развертывание') {
-            steps {
-                echo 'Переносим код в рабочую среду или создаем артефакт'
+                script {
+                    sh '''
+                        curl -X GET "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=1641151245&text=Собираю+новую+версию+Server+Пространства"
+                    '''
+                }
             }
         }
     }
