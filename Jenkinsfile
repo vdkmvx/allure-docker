@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    triggers { pollSCM('* * * * *') }
+
     
     environment {
         TELEGRAM_BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
