@@ -1,21 +1,28 @@
 pipeline {
     agent any
-
     
     environment {
-        TELEGRAM_BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
+        DOCKER_HUB_USERNAME = credentials('DOCKER_HUB_USERNAME')
     }
 
     stages {
         stage('Build') {
             steps {
-		echo " ============== docker login =================="
                 script {
                     sh '''
-                        curl -X GET "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=1641151245&text=Собираю+новую+версию+Server+Пространства"
+                        git checkout jenkins-test
+                        docker build -t $DOCKER_HUB_USERNAME/project-server:cloud4y .
                     '''
                 }
             }
+        }
+        stage('Запуск') {
+            steps {
+                script {
+                    sh "docker run -d $DOCKER_HUB_USERNAME/project-server:cloud4y"
+                }
+            }     
+                
         }
     }
 }
