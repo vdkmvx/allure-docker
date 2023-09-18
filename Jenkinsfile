@@ -19,10 +19,23 @@ pipeline {
         stage('Запуск') {
             steps {
                 script {
-                    sh "docker compose docker-compose.yml up"
+                    sh "docker run -d olsoncarsen/project-server:cloud4y"
                 }
             }     
                 
+        }
+    }
+
+
+    post {
+        always {
+            // Очищаем после себя контейнеры и образы
+            script {
+                def containerId = sh(script: 'docker ps -q --filter "name=olsoncarsen/project-server"', returnStdout: true).trim()
+                sh 'docker stop ${containerId}'
+                sh 'docker rm ${containerId}'
+                sh 'docker rmi olsoncarsen/project-server:cloud4y'
+            }
         }
     }
 }
