@@ -9,10 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh '''
-                        git checkout jenkins-test
-                        docker build -t $DOCKER_HUB_USERNAME/project-server:cloud4y .
-                    '''
+                    sh "docker build -t $DOCKER_HUB_USERNAME/project-server:cloud4y . "
                 }
             }
         }
