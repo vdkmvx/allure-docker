@@ -13,12 +13,6 @@ pipeline {
                 }
             }
         }
-        stage('Запуск') {
-            steps {
-                script {
-                    sh "docker run -d $DOCKER_HUB_USERNAME/project-server:cloud4y"
-                }
-            }     
                 
         }
     }
