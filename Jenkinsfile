@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker build -t $DOCKER_HUB_USERNAME/project-server:cloud4y .
+                        docker ps
                     '''
                 }
             }
