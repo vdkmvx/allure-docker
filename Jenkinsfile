@@ -11,6 +11,7 @@ pipeline {
                 script {
                     sh '''
                         docker ps
+                        docker-compose
                     '''
                 }
             }
