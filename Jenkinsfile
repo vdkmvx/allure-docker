@@ -11,7 +11,7 @@ pipeline {
                 script {
                     sh '''
                         docker ps
-                        docker build -t $DOCKER_HUB_USERNAME/project-server:cloud4y .
+                        docker-compose up
                     '''
                 }
             }
