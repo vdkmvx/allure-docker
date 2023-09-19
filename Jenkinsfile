@@ -11,9 +11,7 @@ pipeline {
                 script {
                     sh '''
                         docker ps
-                        whoami
-                        groups
-                        ls -l /usr/local/bin/docker-compose
+                        docker-compose up
                     '''
                 }
             }
