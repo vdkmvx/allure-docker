@@ -15,16 +15,6 @@ pipeline {
                 }
             }
         }
-
-        stage('nichego') {
-            steps {
-                script {
-                    sh '''
-                        docker-compose up
-                    '''
-                }
-            }
-        }
     }
 
 }
