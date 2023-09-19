@@ -11,7 +11,7 @@ pipeline {
                 script {
                     sh '''
                         docker ps
-                        docker-compose up
+                        docker compose version
                     '''
                 }
             }
